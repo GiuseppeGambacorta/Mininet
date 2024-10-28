@@ -5,14 +5,6 @@ from mininet.log import setLogLevel, info
 from utils import *
 
 
-class CustomTopo(Topo):
-    def build(self, n=3):
-        switch = self.addSwitch('s1')
-    
-        for i in range(n):
-            host = self.addHost(f'h{i+1}')
-            self.addLink(host, switch)
-
 
 
 

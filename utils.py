@@ -1,5 +1,18 @@
 import matplotlib.pyplot as plt
 import networkx as nx
+from mininet.topo import Topo
+from networkx.drawing.nx_agraph import write_dot, graphviz_layout
+
+
+
+class CustomTopo(Topo):
+    def build(self, n=3):
+        switch = self.addSwitch('s1')
+    
+        for i in range(n):
+            host = self.addHost(f'h{i+1}')
+            self.addLink(host, switch)
+
 
 def print_graph(net, filename='network_graph.png'):
     G = nx.Graph()
