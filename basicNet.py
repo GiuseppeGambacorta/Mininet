@@ -2,6 +2,7 @@ from mininet.net import Mininet
 from mininet.topo import Topo
 from mininet.cli import CLI
 from mininet.log import setLogLevel, info
+from utils import *
 
 
 class CustomTopo(Topo):
@@ -11,6 +12,8 @@ class CustomTopo(Topo):
         for i in range(n):
             host = self.addHost(f'h{i+1}')
             self.addLink(host, switch)
+
+
 
 
 def createNetwork():
@@ -27,9 +30,14 @@ def createNetwork():
     
     info('*** Testing network connectivity\n')
     net.pingAll()
+
+
+    print_graph(net,"network_graph")
     
     info('*** Running CLI\n')
     CLI(net)
+
+   
     
     info('*** Stopping network\n')
     net.stop()
